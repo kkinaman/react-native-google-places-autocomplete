@@ -503,10 +503,7 @@ const GooglePlacesAutocomplete = React.createClass({
       request.open('GET', url);
       request.send();
     } else {
-      this._results = [];
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(this.buildRowsFromResults([])),
-      });
+      this.clearDataSource();
     }
   },
 
@@ -541,11 +538,17 @@ const GooglePlacesAutocomplete = React.createClass({
       request.open('GET', 'https://maps.googleapis.com/maps/api/place/autocomplete/json?&input=' + encodeURIComponent(text) + '&' + Qs.stringify(this.props.query));
       request.send();
     } else {
-      this._results = [];
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(this.buildRowsFromResults([])),
-      });
+      this.clearDataSource();
     }
+  },
+
+  clearDataSource() {
+    this._results = [];
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(
+        this.buildRowsFromResults([]),
+      ),
+    });
   },
 
   _onChangeText(text) {
