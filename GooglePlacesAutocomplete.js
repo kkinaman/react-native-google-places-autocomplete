@@ -548,6 +548,10 @@ const GooglePlacesAutocomplete = React.createClass({
     }
   },
 
+  clearInputField() {
+    this.setState({ text: '' });
+  },
+
   _onChangeText(text) {
     this._request(text);
     this.setState({
