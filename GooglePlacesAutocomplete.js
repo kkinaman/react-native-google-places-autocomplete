@@ -741,6 +741,7 @@ const GooglePlacesAutocomplete = React.createClass({
           style={[defaultStyles.textInputContainer, this.props.styles.textInputContainer]}
         >
           {this._renderLeftButton()}
+          <View>
           <TextInput
             { ...userProps }
             ref="textInput"
@@ -754,6 +755,8 @@ const GooglePlacesAutocomplete = React.createClass({
             clearButtonMode="while-editing"
             underlineColorAndroid={this.props.underlineColorAndroid}
           />
+          <View style={{width: 10, height: 10, borderRadius: 5, border: 'none', position: 'absolute', right: 5, backgroundColor: 'pink'}}/>
+          </View>
           {this._renderRightButton()}
         </View>
         {this._getListView()}
